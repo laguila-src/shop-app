@@ -1,15 +1,17 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom' 
+import { Link, useNavigate } from 'react-router-dom' 
 import { Col, Table, Row, Button } from "react-bootstrap";
-
 import CartItem from "./CartItem"
 
+// This function will render the Shopping Cart and all of its items on a Table. 
+// Another Table displays the tax, subtotal, and total the items in the cart and a Checkout Button.
 export default function CartPage({productList, cart, addToCart, removeFromCart, updateCart, getTotalInCart, removeAll }) {
 
   const TAX = 0.095;
   let totalAmount = getTotalInCart();
 	let taxAmount = (TAX*totalAmount);
 
+  // Using useNavigate hook to go back to the Shop page when user clicks the "Continue Shopping" button.
   const navigate = useNavigate();
 
   return (
@@ -30,6 +32,9 @@ export default function CartPage({productList, cart, addToCart, removeFromCart, 
                 </tr>
               </thead>
               <tbody>
+              {/* Mapping through productList and for each product, look at the cart for that
+              product. If the cart is not empty, then render a CartItem which will render the 
+              table data for this Table. */}
               {productList.map((product, index) => {
               if (cart[product.id] !== 0) {
                   return <CartItem key={index} cart={cart} product={product} 
@@ -38,27 +43,41 @@ export default function CartPage({productList, cart, addToCart, removeFromCart, 
               })}
               </tbody>
             </Table>
-            </Col>
+          </Col>
 
-          <div className="col-3 bg-light p-4 border shadow">
-            <h5 className="text-left mb-4 pb-2">Cart Price</h5>
-            <div className="d-flex justify-content-between mb-3">
-              <h6 className="fw-normal">9.5% Sales Tax :</h6>
-              <span>${taxAmount.toFixed(2)}</span>
-            </div>
-            <div className="d-flex justify-content-between mb-3">
-              <h6 className="fw-normal">Subtotal:</h6>
-              <span>${totalAmount.toFixed(2)}</span>
-            </div>
-            <div className="d-flex justify-content-between fw-bold">
-              <h6>Total Price:</h6>
-              <span>${(totalAmount + taxAmount).toFixed(2)}</span>
-            </div>
+          <Col>
+          {/* <Table striped bordered hover> */}
+            <Table borderless hover>
+              <thead>
+                <tr>
+                  <th><h5>Cart Price</h5></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>9.5% Sales Tax:</td>
+                  <td>${taxAmount.toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td>Subtotal:</td>
+                  <td>${totalAmount.toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td><strong>Total Price:</strong></td>
+                  <td><strong>${(totalAmount + taxAmount).toFixed(2)}</strong></td>
+         
+                </tr>
+              </tbody>
+            </Table>
+            <Link to="/checkout">
             <Button variant="warning" size="md" className="mt-4 w-100" >
               Checkout
             </Button>
-          </div>
+            </Link>
+          </Col>
         </Row>
+
         <Row>
         {totalAmount > 0 ? 
         <div className="pt-2 mt-5 ">

@@ -1,5 +1,5 @@
+/* Sets color of all pages to whitesmoke */
 body{
-  /* rgb(161, 180, 206); */
   background-color:whitesmoke;
 }
 
@@ -15,17 +15,27 @@ input {
 	width: 60px;
 }
 
+/* To style CartItem component's Update Cart div with 2 buttons and input */
 .cart-update{
 	display: flex;
 }
 
+
+/*	To style Footer component:
+Tried several CSS combinations to make footer stick to
+the bottom of all pages but nothing worked for ALL pages.
+*/
 #footer-id{
 	display: flex;
 	justify-content: center;
-	margin-bottom: -50;
+	/* margin-bottom: -50; */
+} 
 
-	/* position: relative; */
-	/* margin: 0; */
+/* For Error Page */
+.error-page{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 

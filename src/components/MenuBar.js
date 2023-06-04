@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
+// This is the navigation bar component.
 export default function MenuBar({ getItemsInCart }) {
   let itemsInCart = getItemsInCart();
 

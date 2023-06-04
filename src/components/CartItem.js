@@ -4,14 +4,9 @@ import '../App.css';
 // import { Card, Badge, Button, Form, InputGroup } from 'react-bootstrap'
 import { Button } from "react-bootstrap";
 
+// This component performs all CRUD operations: C(Add to Cart), R(Remove from Cart and Remove All),
+// U(Update Cart), R(Read and display items in cart)
 function CartItem({ cart, product, addToCart, removeFromCart, updateCart, removeAll }) {
-		
-// Temporarily using button instead of Button below:
-// 			<div className="cart-update">
-// 				<Button variant="outline-secondary" size='sm' onClick = {() => removeFromCart(product.id)}> - </Button>
-// 				<input value={cart[product.id]} onChange={(e) => updateCart(parseInt(e.target.value), product.id)} />
-// 				<Button variant="outline-secondary" size='sm' onClick = {() => addToCart(product.id)}> + </Button>
-// 			</div>
 
 return (
     <tr>
