@@ -53,10 +53,10 @@ function Checkout({cart, setCart, productList, getTotalInCart}) {
   	return (
 		<div className='form-control shadow row m-2 p-4'>
 			<div >
-				<p>
+				
 				<h1>Checkout</h1>
 				<strong>Your Total:  ${totalWithTax}</strong>
-				</p>
+				
 			</div>
 			<div>
 				<form onSubmit={formik.handleSubmit}>
